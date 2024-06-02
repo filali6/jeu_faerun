@@ -1,0 +1,467 @@
+/*les elements el tsawer w el titre w el resources */
+body {
+    background-image: url('images/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+ 
+}
+/*******************************************************************************************************************/
+/*splash screen*/
+.splash{
+    cursor:pointer;
+    position:fixed;
+    top:50%;
+    left:50%;
+    height:100%;
+    width:100%;
+    transform:translate(-50%,-50%);
+    background: linear-gradient(to right, rgb(120, 199, 209), rgb(219, 130, 255));
+ 
+    transition: all ease-in-out 600ms;
+    z-index: 1000;
+}
+.hidden{
+    transition: 0.5s;
+    display: none;
+}
+.splash-header{
+    height:90%;
+    color: rgb(248, 229, 176);
+    font-family: consolas;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*********************************************************************************************************/
+ 
+/****************conteneur da la page entiere **************/
+.container {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-left: 150px;
+    padding: 0 20px;
+    margin:0;
+    margin:0;
+    height:100vh;
+
+}
+ 
+
+ /* des conteneur des images des boutons et des ressource  */
+.image_container,
+.image_container2 {
+     
+    position: relative;
+    flex: 1;
+    width: 450px; /* ajustez la largeur selon vos besoins */
+    height: 450px; /* ajustez la hauteur selon vos besoins */
+}
+.image_container{
+    margin-right: auto;
+}
+.image_container2{
+    margin-left: auto;
+}
+/*images chateau*/
+.cb,
+.cr {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+/*ressource */
+.ressources {
+    position: absolute;
+    top: -50px; /* Ajuste la position verticale des ressources au-dessus du château */
+    left: 50%; /* Centre les ressources horizontalement par rapport au château */
+    transform: translateX(-50%); /* Centre les ressources horizontalement */
+    background-color: rgba(164, 182, 162, 0.8); /* Fond semi-transparent pour les ressources */
+    padding: 5px;
+    border-radius: 5px;
+    font-family: Luminari, fantasy;
+    z-index:1;
+    color:white;
+    width: 300px;  
+    height: 30px; 
+    font-size: 20px;
+    text-align: center;
+
+}
+/*conteneur bouton  */
+.bouton-container,
+.bouton-container2{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+/*tableau plateau*/
+#plateau {
+
+    display: flex;
+    width: 700px; /* Taille du plateau ajustée selon le nombre de cases */
+    border: 1px solid black;
+    margin-top: 100px;
+}
+
+.case {
+    text-align: center;
+    flex: 1;
+    height: 200px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.2); /* Couleur de fond floutée */
+}
+
+.element-toggle.active {
+    display: block;
+}
+
+/* houny les boutons s'entrainer les popups  associé */
+.start { 
+    padding: 12px 24px; 
+    font-size: 18px;
+    font-family: Luminari, fantasy; 
+    background-color: rgb(54, 9, 177); 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    left: 50%; 
+} 
+.start2 { 
+    padding: 12px 24px; 
+    font-size: 18px; 
+    font-family: Luminari, fantasy;
+    background-color: rgb(218, 35, 3); 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    left: 50%; 
+} 
+.start-game-container {
+    position: fixed;
+    bottom: 20px; /* Ajustez la marge du bas selon vos besoins */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;   
+}
+.startgame{
+    padding: 20px 100px; 
+    font-size: 18px; 
+    font-family: Luminari, fantasy;
+    background-color: rgb(79, 124, 7); 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+
+}
+ 
+  .btn1icon {
+    margin-left: 50px; /* Add space between icon and text */
+    width: 40px; /* Adjust icon size */
+    height: 40px; /* Adjust icon size */
+  }
+
+.popupblue {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+ 
+.popup-blue{
+    background: #1b17e4; 
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    width: 320px; 
+    text-align: center; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    animation: fadeInUp 0.5s ease-out forwards;
+    color: #ffffff; 
+}
+.reply{
+    padding: 12px 40px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-top: 12px; 
+    background-color: #0c060533; 
+    color: #fff; 
+
+}
+ 
+
+.popupred {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+ 
+.popup-red{
+    background: #ee0a0a; 
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    width: 320px; 
+    text-align: center; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    animation: fadeInUp 0.5s ease-out forwards;
+    color: #ffffff; 
+}
+
+ /***********************************************************************************/
+ /*overlays  */
+.overlay-container, .overlay-container2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+ 
+.start:hover { 
+    background-color: #4c82af; 
+} 
+.start2:hover { 
+    background-color: #af5b4c; 
+}
+
+.overlay-container { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+} 
+
+.popup-box { 
+    background: #fff; 
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    width: 320px; 
+    text-align: center; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    animation: fadeInUp 0.5s ease-out forwards; 
+} 
+
+.form-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* pour centrer les boutons horizontalement */
+    margin-top: 20px;
+} 
+
+.form { 
+    margin-bottom: 10px; 
+    font-size: 16px; 
+    color: #444; 
+    text-align: left; 
+} 
+.btn1,
+.btn2,
+.btn3,
+.btn4{ 
+    padding: 12px 80px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-bottom: 10px; 
+    width:70%
+    
+} 
+.game { 
+    padding: 12px 40px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+} 
+
+.btn1,
+.btn2,
+.btn3,
+.btn4 { 
+    background-color: rgb(41, 11, 148); 
+    color: #fff; 
+} 
+
+.game { 
+    margin-top: 12px; 
+    background-color: #e74c3c; 
+    color: #fff; 
+} 
+
+.btn1:hover,
+.btn2:hover, 
+.btn3:hover, 
+.btn4:hover 
+  { 
+    background-color: #4c9baf; 
+} 
+.btn-start:hover { 
+    background-color: #af5b4c; 
+} 
+
+
+/**************************************************************************/
+
+/*overlay2 */ 
+.overlay-container2 { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+} 
+
+.popup-box2 { 
+    background: #fff; 
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    width: 320px; 
+    text-align: center; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    animation: fadeInUp 0.5s ease-out forwards; 
+} 
+
+.form-container2 { 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* pour centrer les boutons horizontalement */
+    margin-top: 20px;
+} 
+
+.form2 { 
+    margin-bottom: 10px; 
+    font-size: 16px; 
+    color: #444; 
+    text-align: left; 
+} 
+
+.form-input { 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    width: 100%; 
+    box-sizing: border-box; 
+} 
+
+.b1,
+.b2,
+.b3,
+.b4{ 
+    padding: 12px 80px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-bottom: 10px; 
+    width:70% 
+    
+} 
+.b1,
+.b2,
+.b3,
+.b4 { 
+    background-color: rgb(201, 17, 17); 
+    color: #fff; 
+} 
+.b1:hover,
+.b2:hover, 
+.b3:hover, 
+.b4:hover 
+  { 
+    background-color: #af4c4c; 
+} 
+/***************bouton fermer************/
+.ferme { 
+    padding: 12px 40px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-top: 12px; 
+    background-color: #0c0605; 
+    color: #fff; 
+} 
+.ferme:hover { 
+    background-color: #3e3e41; 
+} 
+/****************************************************/
+
+/********************************animation*********************************************/
+/* Keyframes for fadeInUp animation */ 
+@keyframes fadeInUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+/* Animation  popup */ 
+.overlay-container.show { 
+    display: flex; 
+    opacity: 1; 
+} 
+/********************************animation*********************************************/
+
+
+

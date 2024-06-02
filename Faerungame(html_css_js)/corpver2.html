@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de faerun</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="dice.css">
+</head>
+
+
+<body>
+    <div class="splash">
+        <h1 class="splash-header">La bataille de Faërun</h1>
+
+     </div>
+      
+<div class="container ">
+     
+
+     
+        <div class="chateau_bleu">
+            <div class="image_container">
+            
+            <div class="ressources" id="ressourcesBleu">Ressources : 3</div>
+            <img class="cb"src="images/chatblue.png" >
+            
+            <div class="bouton-container">
+                <button class="start" onclick="togglePopup('popupOverlay')">S'entrainer</button> 
+            </div>
+    </div>
+    </div>
+         
+        <div id="popupOverlay" class="overlay-container"> 
+            <div class="popup-box"> 
+                <h2 style="color: rgb(41, 11, 148);font-family: Luminari, fantasy;font-size:30px">Guerrier bleu</h2> 
+                <form class="form-container"> 
+                    <label class="form" for="name"> 
+                        <!--joueur bleu-->
+                         <button class="btn1" onclick="chateauBleu.creerNain()">Nain:1</button>
+                        <svg class="btn1icon">
+                            <image xlink:href="images/Nain.png" width="40" height="40"/>
+                        </svg> 
+                        <button class="btn2" onclick="chateauBleu.creerChefnain()">Chef Nain:3</button> 
+                        <svg class="btn1icon">
+                            <image xlink:href="images/ChefNain.png" width="40" height="40"/>
+                        </svg> 
+                        <button class="btn3" onclick="chateauBleu.creerElfe()">Elfe:2</button>
+                        <svg class="btn1icon">
+                            <image xlink:href="images/Elfe.png" width="40" height="40"/>
+                        </svg>  
+                        <button class="btn4" onclick="chateauBleu.creerChefelfe()">Chef Elfe:4</button> 
+                        <svg class="btn1icon">
+                            <image xlink:href="images/ChefElfe.png" width="40" height="40"/>
+                        </svg> 
+                     
+                    </label>
+                    <button class="ferme" type="button" onclick="closePopup( 'popupOverlay')">Fermez</button> 
+                </form> 
+            </div> 
+        </div> 
+
+        <div id="plateau" class="element-toggle">
+            <div class="case"  id="case1"></div>
+            <div class="case"  id="case2"></div>
+            <div class="case"  id="case3"></div>
+            <div class="case"  id="case4"></div>
+            <div class="case"  id="case5"></div>
+        </div>
+    
+        <div class="chateau_rouge">
+            <div class="image_container2">
+            
+            <div class="ressources" id="ressourcesRouge">Ressources  :  3</div>
+            <img class="cr"src="images/rouge.png" >
+            
+            <div class="bouton-container2">
+                <button class="start2" onclick="togglePopup('popupOverlay2')">S'entrainer</button> 
+            </div>
+    </div>
+    
+
+            <div id="popupOverlay2" class="overlay-container"> 
+                <div class="popup-box2"> 
+                    <h2 style="color: rgb(201, 17, 17);font-family: Luminari, fantasy;font-size:30px">Guerrier Rouge</h2> 
+                    <form class="form-container"> 
+                        <label class="form" for="name"> 
+                            <!--joueur rouge-->
+                            <button class="b1" onclick="chateauRouge.creerNain()">Nain:1</button> 
+                            <svg class="btn1icon">
+                                <image xlink:href="images/Nain.png" width="40" height="40"/>
+                            </svg> 
+                            <button class="b2" onclick="chateauRouge.creerChefnain()">Chef Nain:3</button> 
+                            <svg class="btn1icon">
+                                <image xlink:href="images/ChefNain.png" width="40" height="40"/>
+                            </svg> 
+                            <button class="b3" onclick="chateauRouge.creerElfe()">Elfe:2</button> 
+                            <svg class="btn1icon">
+                                <image xlink:href="images/Elfe.png" width="40" height="40"/>
+                            </svg> 
+                            <button class="b4" onclick="chateauRouge.creerChefelfe()">Chef Elfe:4</button> 
+                            <svg class="btn1icon">
+                                <image xlink:href="images/ChefElfe.png" width="40" height="40"/>
+                            </svg> 
+                        </label>
+                        <button class="ferme" type="button" onclick="closePopup( 'popupOverlay2')">Fermez</button> 
+                    </form> 
+                </div> 
+            </div> 
+
+            <div class="start-game-container">
+                <button class="startgame"id="startGame" onclick="step()">Commencez!</button>
+            </div>
+             
+            <div id="popupwinred" class="popupred">
+                <div class="popup-red">
+                    <h2>Les rouges gagnent !!</h2>
+                    <button class="reply" type="button" onclick="navigate()">Rejouez</button> 
+
+                </div>
+            </div>
+            <div id="popupwinblue" class="popupblue">
+                <div class="popup-blue">
+                     <h2>Les bleux gagnent !!</h2>
+                    <button class="reply" type="button" onclick="navigate()">Rejouez</button> 
+                </div>
+            </div>
+
+    
+</div>
+    <script> 
+        function togglePopup(showId, hideId) { 
+            if (hideId) {
+                const hideOverlay = document.getElementById(hideId);
+                hideOverlay.classList.remove('show');
+            }
+            const showOverlay = document.getElementById(showId); 
+            showOverlay.classList.toggle('show'); 
+        }
+        function closePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.classList.remove('show');
+            }
+        }
+        function navigate() { 
+             
+            const nextPageUrl = 'corpver2.html';
+            window.location.href = nextPageUrl;
+        }
+    
+      //******************************************************************************************************
+      var splashScreen=document.querySelector('.splash');
+      splashScreen.addEventListener('click',()=>{
+           splashScreen.style.opacity=0;
+          setTimeout(()=>{
+               splashScreen.classList.add('hidden')
+           },610)
+       })
+       
+      var splashScreen = document.querySelector('.splash');
+      splashScreen.addEventListener('click', function(event) {
+        navigateToGame();}); 
+       
+        //******************************************************************************************************//
+        function typeEffect(element, speed) {
+            var text = element.innerHTML;
+            element.innerHTML = "";
+            
+            var i = 0;
+            var timer = setInterval(function() {
+              if (i < text.length) {
+                element.append(text.charAt(i));
+                i++;
+              } else {
+                clearInterval(timer);
+              }
+            }, speed);
+          }
+          
+          var speed = 80;
+          var h1 = document.querySelector('h1');
+          var p = document.querySelector('p');
+          var delay = h1.innerHTML.length * speed + speed;
+          
+          
+          typeEffect(h1, speed);
+          
+          setTimeout(function(){
+            p.style.display = "inline-block";
+            typeEffect(p, speed);
+          }, delay);
+          //***************************************************************************************//
+    </script> 
+ 
+    <script src="script1.js"></script>
+    <script src="jeu/Guerrier.js"></script>
+    <script src="jeu/Chateau.js"></script>
+    <script src="jeu/Plateau.js"></script>
+    <script src="jeu/Moteur.js"></script>
+</body>
+
+
+
+</html>
